@@ -4,8 +4,9 @@ import path from 'node:path';
 
 const contactsPath = path.resolve('db', 'contacts.json');
 
-const writeContact = async contacts =>
-  fs.promises.writeFile(contactsPath, JSON.stringify(contacts, undefined, 2));
+async function writeContact(contacts) {
+  fs.writeFile(contactsPath, JSON.stringify(contacts, undefined, 2));
+}
 
 export async function listContacts() {
   try {
