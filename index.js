@@ -16,46 +16,34 @@ const options = program.opts();
 async function invokeAction({ action, id, name, email, phone }) {
   switch (action) {
     case 'list': {
-      await listContacts()
-        .then(contacts => {
-          console.table(contacts);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const contacts = await listContacts();
+
+      console.table(contacts);
+
       break;
     }
 
     case 'get': {
-      await getContactById(id)
-        .then(contact => {
-          console.log(contact);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const contact = await getContactById(id);
+
+      console.log(contact);
+
       break;
     }
 
     case 'add': {
-      await addContact({ name, email, phone })
-        .then(contact => {
-          console.log(contact);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const contact = await addContact({ name, email, phone });
+
+      console.log(contact);
+
       break;
     }
 
     case 'remove': {
-      await removeContact(id)
-        .then(contact => {
-          console.log(contact);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+      const contact = await removeContact(id);
+
+      console.log(contact);
+
       break;
     }
 
